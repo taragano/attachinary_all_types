@@ -1,0 +1,11 @@
+<%=
+	post = @post || post
+	file = post.file
+	if file.resource_type == "image"
+		link_to cl_image_tag(file.path, width: 150, height: 100, crop: :fill), file.fullpath, :target => "_blank"
+	elsif file.resource_type == "video"
+		link_to cl_video_tag(file.path, width: 150, height: 100, crop: :fill, controls: true), file.fullpath, :target => "_blank"
+	else
+		link_to "Download file", file.fullpath
+	end
+%>
